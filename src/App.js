@@ -1,6 +1,6 @@
 import Header from './components/Header';
 import {useDispatch} from 'react-redux';
-import {getCharacters} from './Redux/slices/charactersSlice';
+import {getCharacters} from './Redux/charactersSlice';
 import CharacterList from './Redux/CharacterList';
 import CharacterDetails from './Redux/CharacterDetails';
 import {
