@@ -20,9 +20,6 @@ export const getCharacters = createAsyncThunk(
 			offset +
 			'&ts=1&apikey=ffe7fd022157e5255da0e1d729611171&hash=6c4e93f1c9f871c8f7cccfc68d0bd2bf';
 		const response = await axios.get(link);
-		console.log('page', page);
-		console.log(offset);
-		console.log(link);
 		return response.data.data;
 	}
 );

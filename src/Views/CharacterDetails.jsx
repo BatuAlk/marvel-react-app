@@ -18,10 +18,6 @@ const CharacterDetails = () => {
 			? selectedCharacter.description
 			: 'No description available';
 
-	useEffect(() => {
-		dispatch(getComics(0));
-	}, []);
-
 	return (
 		<div className='character-page'>
 			{loading && <div className='loading'>Loading...</div>}
@@ -29,7 +25,7 @@ const CharacterDetails = () => {
 
 			{!loading && (
 				<div>
-					<Link to='/'>
+					<Link to='/marvel-react-app'>
 						{
 							<div className='back'>
 								<img

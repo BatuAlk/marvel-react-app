@@ -1,5 +1,6 @@
 import {useDispatch} from 'react-redux';
 import {getCharacters} from '../Features/charactersSlice';
+import {setComics} from '../Features/comicsSlice';
 import CharacterList from '../Views/CharacterList';
 import CharacterDetails from '../Views/CharacterDetails';
 import {
@@ -10,7 +11,6 @@ import {
 
 const Characters = () => {
 	const dispatch = useDispatch();
-
 	dispatch(getCharacters());
 
 	return (
