@@ -15,7 +15,7 @@ export const getComics = createAsyncThunk(
 		const ID = JSON.parse(
 			localStorage.getItem('selectedCharacter')
 		).id;
-		const offset = page * 10;
+		const offset = page === 0 ? 0 : page * 10;
 		const link = `https://gateway.marvel.com/v1/public/characters/${ID}/comics?orderBy=onsaleDate&limit=10&offset=${offset}&ts=1&apikey=ffe7fd022157e5255da0e1d729611171&hash=6c4e93f1c9f871c8f7cccfc68d0bd2bf`;
 		const response = await axios.get(link);
 		return response.data.data;
