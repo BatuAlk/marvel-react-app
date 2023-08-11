@@ -4,7 +4,6 @@ import {
 	getCharacters,
 	setSelectedCharacter,
 } from '../Features/charactersSlice';
-import {getComics, setComics} from '../Features/comicsSlice';
 import {Link} from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
@@ -21,8 +20,6 @@ const CharacterList = () => {
 
 	const handleClick = (character) => {
 		dispatch(setSelectedCharacter(character));
-		dispatch(setComics([]));
-		dispatch(getComics(0));
 	};
 
 	return (

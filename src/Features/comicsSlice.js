@@ -15,6 +15,7 @@ export const getComics = createAsyncThunk(
 		const ID = JSON.parse(
 			localStorage.getItem('selectedCharacter')
 		).id;
+		console.log('ID', ID);
 		const offset = page === undefined ? 0 : page * 10;
 		const link = `https://gateway.marvel.com/v1/public/characters/${ID}/comics?orderBy=onsaleDate&limit=10&offset=${offset}&ts=1&apikey=ffe7fd022157e5255da0e1d729611171&hash=6c4e93f1c9f871c8f7cccfc68d0bd2bf`;
 		const response = await axios.get(link);
@@ -29,8 +30,8 @@ const comicsSlice = createSlice({
 		setComics(state, action) {
 			state.comics = action.payload;
 		},
-		setPage(state) {
-			state.page += 1;
+		setPage(state, action) {
+			state.page = action.payload;
 		},
 		setLoading(state) {
 			state.loading = !state.loading;
