@@ -2,6 +2,7 @@
 	"name": "marvel-react-app",
 	"version": "0.1.0",
 	"private": true,
+	"homepage": "https://BatuAlk.github.io/marvel-react-app",
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.9.5",
 		"@testing-library/jest-dom": "^5.17.0",
