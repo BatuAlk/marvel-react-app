@@ -16,7 +16,7 @@ const Characters = () => {
 	return (
 		<Router>
 			<Switch>
-				<Route exact path='/'>
+				<Route exact path='/marvel-react-app'>
 					<CharacterList />
 				</Route>
 				<Route exact path='/characters/:id'>

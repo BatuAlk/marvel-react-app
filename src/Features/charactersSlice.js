@@ -13,9 +13,16 @@ const initialState = {
 export const getCharacters = createAsyncThunk(
 	'characters/getCharacters',
 	async (page) => {
-		const offset = page === 0 ? 0 : page * 30;
-		const link = `https://gateway.marvel.com/v1/public/characters?&limit=30&offset=${offset}&ts=1&apikey=ffe7fd022157e5255da0e1d729611171&hash=6c4e93f1c9f871c8f7cccfc68d0bd2bf`;
+		const offset =
+			page === undefined ? parseInt(0) : parseInt(page * 30);
+		const link =
+			'https://gateway.marvel.com/v1/public/characters?&limit=30&offset=' +
+			offset +
+			'&ts=1&apikey=ffe7fd022157e5255da0e1d729611171&hash=6c4e93f1c9f871c8f7cccfc68d0bd2bf';
 		const response = await axios.get(link);
+		console.log('page', page);
+		console.log(offset);
+		console.log(link);
 		return response.data.data;
 	}
 );
