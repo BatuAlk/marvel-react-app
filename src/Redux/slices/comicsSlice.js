@@ -11,13 +11,10 @@ const initialState = {
 
 export const getComics = createAsyncThunk(
 	'comics/getComics',
-	async (page) => {
-		const ID = JSON.parse(
-			localStorage.getItem('selectedCharacter')
-		).id;
-		console.log('ID', ID);
+	async (values) => {
+		const {ID, page} = values;
 		const offset = page === undefined ? 0 : page * 10;
-		const link = `https://gateway.marvel.com/v1/public/characters/${ID}/comics?orderBy=onsaleDate&limit=10&offset=${offset}&ts=1&apikey=ffe7fd022157e5255da0e1d729611171&hash=6c4e93f1c9f871c8f7cccfc68d0bd2bf`;
+		const link = `https://gateway.marvel.com/v1/public/characters/${ID}/comics?orderBy=onsaleDate&limit=10&offset=${offset}&ts=1&apikey=6e85efbf70c603924a313f9cd73fc263&hash=9156337c7a6efaf8e727cde69c0d5aed`;
 		const response = await axios.get(link);
 		return response.data.data;
 	}

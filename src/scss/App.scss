@@ -1,0 +1,74 @@
+$color_1: #fff;
+$color_2: #ff3131;
+$color_3: #27c2ff;
+$font-family_1: 'Marvel', sans-serif;
+$background-color_1: #1a1a1a;
+$background-color_2: #a70000;
+$background-color_3: transparent;
+
+$breakpoints: (
+	'1040px': 5,
+	'875px': 4,
+	'710px': 3,
+	'533px': 2,
+);
+
+@each $breakpoint, $columns in $breakpoints {
+	@media screen and (max-width: $breakpoint) {
+		.characters {
+			grid-template-columns: repeat(#{$columns}, 1fr) !important;
+		}
+	}
+}
+
+body {
+	background-color: $background-color_1;
+	font-family: $font-family_1;
+	font-size: 20px;
+	color: $color_1;
+	margin: 0;
+	padding: 0;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.loading {
+	text-align: center;
+	margin: 20px;
+}
+
+a {
+	text-decoration: none;
+
+	&:hover {
+		color: rgb(209, 209, 209) !important;
+	}
+
+	&:active {
+		color: $color_1;
+	}
+
+	&:visited {
+		color: $color_3;
+	}
+
+	&:link {
+		color: $color_2;
+	}
+}
+
+.back {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px;
+	font-size: 22px;
+	img {
+		margin-right: 10px;
+	}
+}
+
+.end {
+	text-align: center;
+	margin: 20px;
+}

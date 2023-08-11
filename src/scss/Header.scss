@@ -1,0 +1,12 @@
+$background-color_2: #a70000;
+$color_1: #fff;
+
+.header {
+	background-color: $background-color_2;
+	color: $color_1;
+	padding: 15px 20px;
+	text-align: center;
+	img {
+		width: 20%;
+	}
+}

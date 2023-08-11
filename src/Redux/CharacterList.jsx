@@ -2,10 +2,11 @@ import {useSelector, useDispatch} from 'react-redux';
 import {
 	setPage,
 	getCharacters,
-	setSelectedCharacter,
-} from '../Features/charactersSlice';
+	getCharacter,
+} from './slices/charactersSlice';
 import {Link} from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import '../scss/Characters.scss';
 
 const CharacterList = () => {
 	const dispatch = useDispatch();
@@ -18,8 +19,8 @@ const CharacterList = () => {
 		dispatch(getCharacters(page + 1));
 	};
 
-	const handleClick = (character) => {
-		dispatch(setSelectedCharacter(character));
+	const handleCharacterClick = (character) => {
+		dispatch(getCharacter(character.id));
 	};
 
 	return (
@@ -39,7 +40,7 @@ const CharacterList = () => {
 						to={`/characters/${character.id}`}
 						key={index}
 						className='character'
-						onClick={() => handleClick(character)}
+						onClick={() => handleCharacterClick(character)}
 					>
 						<img
 							className='character-image'

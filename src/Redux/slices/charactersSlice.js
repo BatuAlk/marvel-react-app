@@ -3,8 +3,8 @@ import axios from 'axios';
 
 const initialState = {
 	characters: [],
-	selectedCharacter: Object(),
 	total: 0,
+	selectedCharacter: {},
 	error: '',
 	page: 0,
 	loading: true,
@@ -18,7 +18,19 @@ export const getCharacters = createAsyncThunk(
 		const link =
 			'https://gateway.marvel.com/v1/public/characters?&limit=30&offset=' +
 			offset +
-			'&ts=1&apikey=ffe7fd022157e5255da0e1d729611171&hash=6c4e93f1c9f871c8f7cccfc68d0bd2bf';
+			'&ts=1&apikey=6e85efbf70c603924a313f9cd73fc263&hash=9156337c7a6efaf8e727cde69c0d5aed';
+		const response = await axios.get(link);
+		return response.data.data;
+	}
+);
+
+export const getCharacter = createAsyncThunk(
+	'characters/getCharacter',
+	async (id) => {
+		const link =
+			'https://gateway.marvel.com/v1/public/characters/' +
+			id +
+			'?&ts=1&apikey=6e85efbf70c603924a313f9cd73fc263&hash=9156337c7a6efaf8e727cde69c0d5aed';
 		const response = await axios.get(link);
 		return response.data.data;
 	}
@@ -42,10 +54,6 @@ const charactersSlice = createSlice({
 		},
 		setSelectedCharacter(state, action) {
 			state.selectedCharacter = action.payload;
-			localStorage.setItem(
-				'selectedCharacter',
-				JSON.stringify(action.payload)
-			);
 		},
 	},
 	extraReducers: (builder) => {
@@ -66,14 +74,23 @@ const charactersSlice = createSlice({
 		builder.addCase(getCharacters.pending, (state) => {
 			state.loading = true;
 		});
+
+		builder.addCase(getCharacter.fulfilled, (state, action) => {
+			state.selectedCharacter = action.payload.results[0];
+			state.loading = false;
+			state.error = '';
+		});
+		builder.addCase(getCharacter.rejected, (state, action) => {
+			state.error = action.error.message;
+			state.loading = false;
+			state.selectedCharacter = {};
+		});
+		builder.addCase(getCharacter.pending, (state) => {
+			state.loading = true;
+		});
 	},
 });
 
-export const {
-	setCharacters,
-	setPage,
-	setLoading,
-	setError,
-	setSelectedCharacter,
-} = charactersSlice.actions;
+export const {setCharacters, setPage, setLoading, setError} =
+	charactersSlice.actions;
 export default charactersSlice.reducer;

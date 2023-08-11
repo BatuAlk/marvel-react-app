@@ -1,16 +1,23 @@
 import {useSelector, useDispatch} from 'react-redux';
 import {Link} from 'react-router-dom';
-import Comics from '../components/Comics';
-import {getComics} from '../Features/comicsSlice';
-import {useEffect} from 'react';
+import Comics from './Comics';
+import {getCharacter} from './slices/charactersSlice';
 import previous from '../images/previous.png';
+import {useParams} from 'react-router-dom';
+import {useEffect} from 'react';
+import '../scss/CharacterDetails.scss';
 
 const CharacterDetails = () => {
+	const {id} = useParams();
 	const {loading, error} = useSelector((state) => state.characters);
 	const dispatch = useDispatch();
 
-	const selectedCharacter = JSON.parse(
-		localStorage.getItem('selectedCharacter')
+	useEffect(() => {
+		dispatch(getCharacter(id));
+	}, [dispatch, id]);
+
+	const selectedCharacter = useSelector(
+		(state) => state.characters.selectedCharacter
 	);
 
 	const description =

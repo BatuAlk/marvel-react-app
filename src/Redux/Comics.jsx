@@ -1,27 +1,27 @@
-import {getComics, setPage, setComics} from '../Features/comicsSlice';
+import {getComics, setPage, setComics} from './slices/comicsSlice';
 import {useSelector, useDispatch} from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import {useEffect} from 'react';
+import {useParams} from 'react-router-dom';
+import '../scss/Comics.scss';
 
 const Comics = () => {
 	const dispatch = useDispatch();
 	const {comics, loading, error, page, total} = useSelector(
 		(state) => state.comics
 	);
+	const {id} = useParams();
 
 	const fetchNewComics = () => {
 		dispatch(setPage(page + 1));
-		dispatch(getComics(page + 1));
+		dispatch(getComics({page: page + 1, ID: id}));
 	};
 
 	useEffect(() => {
 		dispatch(setPage(0));
 		dispatch(setComics([]));
-		dispatch(getComics(0));
+		dispatch(getComics({page: 0, ID: id}));
 	}, []);
-
-	console.log(comics.length);
-	console.log(total);
 
 	return (
 		<div>
@@ -29,7 +29,7 @@ const Comics = () => {
 			{error && <div>{error}</div>}
 
 			<div>
-				<h2>Comics</h2>
+				{!loading && <h2>Comics</h2>}
 				<InfiniteScroll
 					dataLength={comics.length}
 					next={fetchNewComics}

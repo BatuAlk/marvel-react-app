@@ -1,6 +1,6 @@
 import {configureStore} from '@reduxjs/toolkit';
-import charactersReducer from '../Features/charactersSlice';
-import comicsReducer from '../Features/comicsSlice';
+import charactersReducer from '../Redux/slices/charactersSlice';
+import comicsReducer from '../Redux/slices/comicsSlice';
 
 export default configureStore({
 	reducer: {
