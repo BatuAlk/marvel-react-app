@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/marvel-react-app/static/css/main.05772416.css",
-    "main.js": "/marvel-react-app/static/js/main.b5c0e01e.js",
+    "main.js": "/marvel-react-app/static/js/main.bdf79a21.js",
     "static/js/787.25c31104.chunk.js": "/marvel-react-app/static/js/787.25c31104.chunk.js",
     "static/media/previous.png": "/marvel-react-app/static/media/previous.17930e7c9760cc0db957.png",
     "index.html": "/marvel-react-app/index.html",
     "main.05772416.css.map": "/marvel-react-app/static/css/main.05772416.css.map",
-    "main.b5c0e01e.js.map": "/marvel-react-app/static/js/main.b5c0e01e.js.map",
+    "main.bdf79a21.js.map": "/marvel-react-app/static/js/main.bdf79a21.js.map",
     "787.25c31104.chunk.js.map": "/marvel-react-app/static/js/787.25c31104.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.05772416.css",
-    "static/js/main.b5c0e01e.js"
+    "static/js/main.bdf79a21.js"
   ]
 }
